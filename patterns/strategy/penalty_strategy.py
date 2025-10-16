@@ -1,6 +1,6 @@
 """This module defines the PenaltyStrategy class."""
 
-__author__ = "komalpreet Kaur"
+__author__ = "Komalpreet Kaur"
 __version__ = "1.0.0"
 
 from .payment_strategy import PaymentStrategy
