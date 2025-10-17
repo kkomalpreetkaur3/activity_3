@@ -6,10 +6,29 @@ __version__ = "1.0.0"
 from .payment_strategy import PaymentStrategy
 
 class PenaltyStrategy(PaymentStrategy):
-    """Applies a $10 penalty for incomplete payments."""
+    """
+    PenaltyStrategy Class
+    
+    Purpose:
+       Applies penalty of $10.00 when the balance is not fully paid.
+    """
 
     def process_payment(self, billing_account, payee, amount):
-
+        """
+        Method: process_payment
+        
+        Purpose:
+            Deducts payment amount and adds penalty if the payment does not
+            clear the full balance.
+            
+        Args: 
+            billing_account: The BillingAccount instance.
+            payee: The payee being paid.
+            amount: The payment amount.
+            
+        Returns:
+            str: With confirmation message after applying payment or prnalty.
+        """
         billing_account.deduct_balance(payee, amount)
         balance = billing_account.get_balance(payee)
 

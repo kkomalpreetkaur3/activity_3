@@ -6,14 +6,30 @@ __version__ = "1.0.0"
 from .payment_strategy import PaymentStrategy
 
 class PartialPaymentStrategy(PaymentStrategy):
-    """Process partial payments without penalty."""
+    """
+    PartialPaymentStrategy Class
+   
+    Purpose:
+       Allows partial payments to be processed without penalty.
+    """
 
     def process_payment(self, billing_account, payee, amount):
+        """
+        Method: process_payment
         
+        Purpose:
+            Processes a partial payment for the given payee.
+            
+        Args:
+            billing_account: The BillingAccount instance.
+            payee: The payee whose bill is being paid.
+            amount: The amount being paid.
+        
+        Returns:
+            str: Confirmation message after payment is processed."""
         billing_account.deduct_balance(payee, amount)
         balance = billing_account.get_balance(payee)
 
-        """Checks balance status and return message."""
         if balance <= 0:
             return f"Processed payment of ${amount:.2f}. New balance: $0.00."
         else:
